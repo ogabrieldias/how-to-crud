@@ -18,7 +18,7 @@ export default function TableList({ handleOpen, tableData, setTableData , search
         const confirmDelete = window.confirm("Are you sure you want to delete this client?");
         if (confirmDelete) {
             try {
-                await axios.delete(`http://localhost:3000/api/clients/${id}`); // API call to delete client
+                await axios.delete(`${import.meta.env.VITE_API_URL}/api/clients/${id}`);
                 setTableData((prevData) => prevData.filter(client => client.id !== id)); // Update state
             } catch (err) {
                 setError(err.message); // Handle any errors
